@@ -1,0 +1,32 @@
+---
+description: UX, idioma y unidades para la app Kifit
+alwaysApply: true
+---
+
+# UX & Idioma — Kifit
+
+## Idioma
+- Toda la UI en español. Sin excepciones.
+- Mensajes de error en español, claros y sin tecnicismos.
+
+```tsx
+// ✅ CORRECTO
+'No se pudo cargar el entrenamiento. Intenta de nuevo.'
+
+// ❌ MAL
+'Error 500: Internal Server Error'
+'Failed to fetch workout'
+```
+
+## Unidades
+- Peso siempre en **kg**.
+- Distancia siempre en **km**.
+- Nunca mostrar lbs o millas.
+
+## Botones de acción primaria
+- Siempre `bg-blue-600` (acción principal) o `bg-green-500` (completar / confirmar).
+- Botones destructivos con `bg-red-500`.
+
+## Solo dark mode
+- Nunca diseñar para light mode salvo que se solicite explícitamente.
+- Todo el diseño asume fondo `bg-slate-900`.

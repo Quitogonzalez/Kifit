@@ -1,0 +1,42 @@
+---
+description: Patrones y seguridad de Supabase para Kifit
+globs: "{lib,hooks,stores,store}/**/*.ts"
+alwaysApply: false
+---
+
+# Supabase — Kifit
+
+## Cliente
+- Siempre importar el cliente desde `lib/supabase.ts`. Nunca crear uno nuevo con `createClient`.
+
+```ts
+// ✅ CORRECTO
+import { supabase } from '@/lib/supabase';
+
+// ❌ MAL
+import { createClient } from '@supabase/supabase-js';
+const supabase = createClient(...);
+```
+
+## Patrón de llamadas
+- Siempre desestructurar `{ data, error }` y manejar ambos.
+
+```ts
+// ✅ CORRECTO
+const { data, error } = await supabase.from('workouts').select('*');
+if (error) {
+  // manejar error
+  return;
+}
+
+// ❌ MAL
+const result = await supabase.from('workouts').select('*');
+```
+
+## Seguridad
+- Siempre Row Level Security habilitado. Nunca desactivar RLS en tablas de producción.
+- Nunca exponer la `service_role` key en el cliente móvil. Solo usar la `anon` key.
+- No modificar el schema de Supabase sin mostrarlo primero para aprobación.
+
+## Tipos
+- Usar los tipos generados desde Supabase (`types/database.ts`) para todas las queries.

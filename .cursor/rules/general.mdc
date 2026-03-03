@@ -1,0 +1,33 @@
+---
+description: Reglas generales de TypeScript y código para Kifit
+alwaysApply: true
+---
+
+# General — Kifit
+
+## TypeScript
+- Siempre TypeScript estricto. Nunca usar `any`.
+- Tipos siempre explícitos en props, retornos de funciones y callbacks.
+- Nunca usar type assertions (`as`) salvo casos excepcionales justificados.
+
+## Componentes
+- Siempre componentes funcionales con arrow functions.
+- Naming: PascalCase para componentes (`WorkoutCard`), camelCase para hooks (`useWorkout`), kebab-case para archivos de utilidades.
+
+## Logging
+- Nunca `console.log` en producción. Si es temporal, agregar `// TODO: remove`.
+
+## Strings
+- Nunca hardcodear strings de UI. Usar constantes en `constants/` o variables descriptivas.
+
+## Variables de Entorno
+- Siempre acceder a las env vars a través de `constants/config.ts`, nunca con `process.env` directo en componentes o stores.
+
+## Librerías y Estructura
+- No instalar librerías no solicitadas sin avisar primero.
+- No cambiar la estructura de carpetas sin avisar primero.
+- Siempre usar `npx expo`, nunca `expo-cli` legacy.
+
+## Skills
+- Hay skills instaladas que extienden las capacidades del agente. Consultar `AGENTS.md` → sección "Skills Disponibles" para saber cuándo activar cada una.
+- Activar una skill = leerla con el Read tool antes de ejecutar la tarea correspondiente.

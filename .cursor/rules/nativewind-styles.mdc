@@ -1,0 +1,44 @@
+---
+description: Paleta de colores, estilos y dark mode con NativeWind v4 para Kifit
+globs: **/*.tsx
+alwaysApply: false
+---
+
+# NativeWind & Estilos — Kifit
+
+## Dark Mode
+- Solo dark mode. Nunca agregar clases `light:` salvo que se pida explícitamente.
+
+## Paleta de colores del proyecto
+
+| Rol | Clase Tailwind |
+|---|---|
+| Fondo principal | `bg-slate-900` |
+| Fondo cards | `bg-slate-800` |
+| Primario | `bg-blue-600` |
+| Éxito / acento | `bg-green-500` |
+| Alerta | `bg-orange-500` |
+| Peligro | `bg-red-500` |
+| Texto principal | `text-slate-50` |
+| Texto secundario | `text-slate-400` |
+
+```tsx
+// ✅ CORRECTO
+<View className="bg-slate-900">
+  <Text className="text-slate-50">Título</Text>
+  <Text className="text-slate-400">Subtítulo</Text>
+</View>
+
+// ❌ MAL
+<View style={{ backgroundColor: '#0f172a' }}>
+```
+
+## Bordes
+- Mínimo `rounded-xl` en cualquier elemento.
+- Cards siempre `rounded-2xl`.
+
+## Tipografía
+- Inter en todos los textos. Configurar en `tamagui.config.ts` o equivalente.
+
+## Versión
+- NativeWind v4. No usar la API de v2 (`tw()`, `styled()` de nativewind).

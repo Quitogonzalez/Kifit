@@ -1,0 +1,41 @@
+---
+description: Arquitectura, estructura de carpetas y convenciones de Kifit
+alwaysApply: true
+---
+
+# Arquitectura — Kifit
+
+## Separación de responsabilidades
+- `components/` → solo UI, sin lógica de datos ni llamadas a Supabase.
+- `stores/` → lógica de negocio con Zustand. Un store por dominio (`useWorkoutStore`, `useUserStore`).
+- `lib/` → funciones utilitarias y cliente de Supabase.
+- `hooks/` → hooks reutilizables que orquestan stores y lib.
+
+## Tipos
+- Tipos globales en `types/index.ts`.
+- Si un dominio crece, se puede dividir: `types/workout.ts`, `types/user.ts`, etc.
+- Tipos de base de datos generados en `types/database.ts` (output de `supabase gen types`).
+
+## Constantes
+- Todas las constantes en `constants/`.
+- Variables de entorno encapsuladas en `constants/config.ts`.
+
+## Stores (Zustand)
+- Archivo por dominio en `stores/`: `workoutStore.ts`, `userStore.ts`.
+- Naming del hook: `useXxxStore` (ej: `useWorkoutStore`).
+
+## Scope
+- No crear pantallas nuevas fuera del scope de la fase actual.
+- No modificar el schema de Supabase sin mostrarlo antes para aprobación.
+
+## Estructura de carpetas esperada
+```
+app/          → rutas de Expo Router
+components/   → componentes UI reutilizables
+stores/       → Zustand stores
+lib/          → supabase.ts y utilidades
+hooks/        → custom hooks
+types/        → tipos TypeScript
+constants/    → constantes y config
+assets/       → imágenes y fuentes
+```

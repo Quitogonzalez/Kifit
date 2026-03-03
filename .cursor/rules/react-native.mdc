@@ -1,0 +1,46 @@
+---
+description: Reglas de Expo, React Native y navegación para Kifit
+globs: **/*.tsx
+alwaysApply: false
+---
+
+# React Native & Expo — Kifit
+
+## Navegación
+- Siempre Expo Router. Nunca React Navigation directo.
+- Rutas tipadas con los tipos generados por Expo Router, nunca strings hardcodeados para rutas.
+
+## SafeArea
+- Siempre usar `SafeAreaView` de `react-native-safe-area-context` o el componente `SafeScreen` del proyecto.
+- Nunca el `SafeAreaView` de `react-native` core.
+
+## Estilos
+- Nunca estilos inline (`style={{}}`). Siempre NativeWind con `className`.
+
+## Formularios
+- Siempre `KeyboardAvoidingView` en pantallas con formularios.
+- Usar `behavior="padding"` en iOS y `behavior="height"` en Android.
+
+```tsx
+// ✅ CORRECTO
+import { Platform } from 'react-native';
+
+<KeyboardAvoidingView
+  behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+  className="flex-1"
+>
+```
+
+## Imágenes
+- Siempre `Image` de `expo-image`. Nunca el `Image` nativo de React Native.
+
+```tsx
+// ✅ CORRECTO
+import { Image } from 'expo-image';
+
+// ❌ MAL
+import { Image } from 'react-native';
+```
+
+## Estado
+- Siempre manejar estados de `loading` y `error` en cada llamada async.
